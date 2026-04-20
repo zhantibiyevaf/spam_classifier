@@ -1,27 +1,14 @@
-from pathlib import Path
-
 import pandas as pd
 
+def load_spam_data(path: str) -> pd.DataFrame:
+    """
+    Load the spam email dataset from a CSV file.
 
-DATASET_PATH = Path(__file__).resolve().parent.parent / "data" / "spam_email_dataset.csv"
+    Args:
+        path (str): The file path to the CSV dataset.
 
-
-def read_spam_dataset(dataset_path: Path = DATASET_PATH) -> pd.DataFrame:
-    """Load the spam dataset into a DataFrame."""
-    return pd.read_csv(dataset_path)
-
-
-def load_spam_data(dataset_path: Path = DATASET_PATH) -> pd.DataFrame:
-    """Backward-compatible wrapper used by the training script."""
-    return read_spam_dataset(dataset_path)
-
-
-def main() -> None:
-    df = read_spam_dataset()
-    print(df.head())
-    print(df.columns.tolist())
-    print(df.info())
-
-
-if __name__ == "__main__":
-    main()
+    Returns:
+        pd.DataFrame: A DataFrame containing the loaded dataset.
+    """
+    df = pd.read_csv(path)
+    return df
